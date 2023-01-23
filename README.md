@@ -1,8 +1,11 @@
 # Issues
 
 
-## UML Class Diagram for files provided
-![](media/55GroupProjectUML.jpg)
+## Issue 1
+lol
 
-## UML Sequence Diagram for files provided
-![](media/55GroupProjectSequenceDiagram.png)
+## Issue 2
+lol
+
+## Issue 3
+lol

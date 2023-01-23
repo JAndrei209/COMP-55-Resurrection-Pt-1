@@ -4,7 +4,7 @@
 ## Issue 1: Extra Classes are still include but not Used
 * Many of the classes and functions were never used in the actual game but were still included in case they were ever needed (example: composer class, spawner class, hit circle class, Conveyor Class, Etc.) 
 * Steps:
-- Identify which functions and classes are not used
+### Identify which functions and classes are not used
 - Decide whether to keep them by integrating them into the current game, or delete them.
 
 

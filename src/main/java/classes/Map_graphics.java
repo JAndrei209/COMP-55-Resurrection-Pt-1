@@ -57,9 +57,6 @@ public class Map_graphics extends Map implements KeyListener {
 	GImage wasd = new GImage("wasd2.png", 200, 0);
 	int fail_x = 0;
 	Timer score_streak_graphic;
-
-	public static final String MUSIC_FOLDER = "sounds";
-
 	
 	//Spawners
 	Spawner spawner = new Spawner(current, start, count_left, count_right, spawned_list, spawned_list_right);
@@ -101,7 +98,7 @@ public class Map_graphics extends Map implements KeyListener {
 		int key = e.getKeyCode();
 		if (key == KeyEvent.VK_ESCAPE) {
 			box.reset_fail();
-			stopMusic();
+			dfg.stopMusic();
 			reset();
 			menu.start();
 		}
@@ -186,7 +183,7 @@ public class Map_graphics extends Map implements KeyListener {
 		// To Check if Player Fails
 		if (failed(box)) {
 			box.reset_fail();
-			stopMusic();
+			dfg.stopMusic();
 			reset();
 			Fail_screen f = new Fail_screen(current);
 			f.start();
@@ -196,7 +193,7 @@ public class Map_graphics extends Map implements KeyListener {
 		//To Check if Player Passes
 		if (passed(box.get_score())) {
 			box.reset_fail();
-			stopMusic();
+			dfg.stopMusic();
 			reset();
 			Pass_screen p = new Pass_screen(current);
 			p.start();
@@ -303,10 +300,6 @@ public class Map_graphics extends Map implements KeyListener {
 
 	}
 
-	public void stopMusic() {
-		Song test = Song.getInstance();
-		test.stopSound(MUSIC_FOLDER, current.get_string());
-	}
 
 	// Spawner
 	void spawn_food() {
@@ -492,7 +485,7 @@ public class Map_graphics extends Map implements KeyListener {
 					remove(getElementAt((i.getX()), (i.getY())));
 					box.reset_streak();
 					if (failed(box)) {
-						stopMusic();
+						dfg.stopMusic();
 						box.reset();
 						reset();
 						Fail_screen f = new Fail_screen(current);
@@ -516,7 +509,7 @@ public class Map_graphics extends Map implements KeyListener {
 					remove(getElementAt((i.getX()), (i.getY())));
 					box.reset_streak();
 					if (failed(box)) {
-						stopMusic();
+						dfg.stopMusic();
 						box.reset();
 						reset();
 						Fail_screen f = new Fail_screen(current);
@@ -542,7 +535,7 @@ public class Map_graphics extends Map implements KeyListener {
 					remove(getElementAt((i.getX()), (i.getY())));
 					box.reset_streak();
 					if (failed(box)) {
-						stopMusic();
+						dfg.stopMusic();
 						box.reset();
 						reset();
 						Fail_screen f = new Fail_screen(current);

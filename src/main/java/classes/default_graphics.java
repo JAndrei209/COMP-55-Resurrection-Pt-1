@@ -19,7 +19,18 @@ public class default_graphics extends Map implements KeyListener {
 	// Create New Class with Code
 	// Copy down functions and output wanted types
 	// Remove Extra Code
-	
+	public int change_speed(Level l) {
+		int speed = 8;
+		if (l == level_2) {
+			speed = 15;
+		}
+		if (l == level_3) {
+			speed = 6;
+		}
+		return speed;
+	}
+
+
 	public static void main(String args[]) {
 		
 	}

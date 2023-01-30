@@ -21,9 +21,14 @@ public class Map_graphics extends Map implements KeyListener {
 	public Map_graphics(Level c) {
 		this.current = c;
 	}
+	// Extracts From Main Map database
 	static Map_Database data = new Map_Database();
+	// Creates Default Graphics
 	static default_graphics dfg = new default_graphics();
+	
 	GraphicsApplication app = this;
+	
+	// Makes images
 	GImage singleHitCircle;
 	GImage hitCircle1;
 	GImage hitCircle2;
@@ -36,12 +41,15 @@ public class Map_graphics extends Map implements KeyListener {
 	int index_left;
 	GImage overall_delete;
 	GImage overall_delete1;
+	
+	//Creates List of Arrays
 	ArrayList<GImage> spawned_list = new ArrayList<GImage>();
 	ArrayList<GImage> spawned_list_right = new ArrayList<GImage>();
 	ArrayList<GImage> passed_hit_circle = new ArrayList<GImage>();
 	ArrayList<String> food_images = new ArrayList<String>();
 	ArrayList<String> food_images_right = new ArrayList<String>();
-
+	
+	// Creates Score Box
 	GRect score_streak;
 	GLabel score1;
 	GLabel streak1;
@@ -58,7 +66,6 @@ public class Map_graphics extends Map implements KeyListener {
 	public void run() {
 		//change speed
 		speed = dfg.change_speed(current);
-
 		start = System.currentTimeMillis();
 		requestFocus();
 		addKeyListeners();
@@ -76,9 +83,10 @@ public class Map_graphics extends Map implements KeyListener {
 		// Conveyor
 		create_conveyor();
 
-		// hit Circle
+		// Hit Circle
 		create_hit_circle();
-
+		
+		// Adds team Logo
 		GImage logo = new GImage("World's Hardest Games Logo.png", 680, -20);
 		logo.sendToFront();
 		add(logo);
@@ -89,6 +97,7 @@ public class Map_graphics extends Map implements KeyListener {
 
 	public void keyPressed(KeyEvent e) {
 
+		// To Leave the Game
 		int key = e.getKeyCode();
 		if (key == KeyEvent.VK_ESCAPE) {
 			box.reset_fail();
@@ -96,6 +105,8 @@ public class Map_graphics extends Map implements KeyListener {
 			reset();
 			menu.start();
 		}
+		
+		// Press W when a bun hits the middle of a hit circle(s)
 
 		if (key == KeyEvent.VK_W) {
 			if (current == level_3) {
@@ -114,6 +125,8 @@ public class Map_graphics extends Map implements KeyListener {
 			}
 
 		}
+		
+		// Press A when a tofu hits the middle of a hit circle(s)
 		if (key == KeyEvent.VK_A) {
 			if (current == level_3) {
 				if (check_left() == "tofu") {
@@ -131,6 +144,8 @@ public class Map_graphics extends Map implements KeyListener {
 			}
 
 		}
+		
+		// Press S when a ketchup hits the middle of a hit circle(s)
 		if (key == KeyEvent.VK_S) {
 			if (current == level_3) {
 				if (check_left() == "ketchup") {
@@ -148,6 +163,8 @@ public class Map_graphics extends Map implements KeyListener {
 			}
 
 		}
+		
+		// Press D when a tomato hits the middle of a hit circle(s)
 		if (key == KeyEvent.VK_D) {
 			if (current == level_3) {
 				if (check_left() == "tomato") {
@@ -165,6 +182,8 @@ public class Map_graphics extends Map implements KeyListener {
 			}
 
 		}
+		
+		// To Check if Player Fails
 		if (failed(box)) {
 			box.reset_fail();
 			stopMusic();
@@ -173,6 +192,8 @@ public class Map_graphics extends Map implements KeyListener {
 			f.start();
 
 		}
+		
+		//To Check if Player Passes
 		if (passed(box.get_score())) {
 			box.reset_fail();
 			stopMusic();
@@ -182,19 +203,12 @@ public class Map_graphics extends Map implements KeyListener {
 		}
 
 	}
-
-	public static void main(String args[]) {
-		// new Map_graphics().start();
-	}
-	public void add_game_background() {
-		// play game background
-		GImage blue = new GImage("title_screen_bluebackground.jpg", 0, 0);
-		add(blue);
-
-		// DJ
-		GImage dj = new GImage("DJ 1.png", 270, 285);
-		add(dj);
-	}
+	
+	
+	
+	
+	
+//Background
 
 	public void create_conveyor() {
 		final int x1 = 0;
@@ -217,7 +231,7 @@ public class Map_graphics extends Map implements KeyListener {
 
 	public void create_hit_circle() {
 		final int h1 = 550; // will be for HitCircle on large conveyor
-		final int w1 = 400; // will be for HitCircle on large conveyornb
+		final int w1 = 400; // will be for HitCircle on large conveyor
 		final int h2 = 275; // will be for first HitCircle on smaller conveyor
 		final int w2 = 400; // will be for first HitCircle on smaller conveyor
 		final int h3 = 425; // will be for second HitCircle on smaller conveyor

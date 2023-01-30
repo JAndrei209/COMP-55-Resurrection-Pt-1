@@ -21,7 +21,8 @@ public class Map_graphics extends Map implements KeyListener {
 	public Map_graphics(Level c) {
 		this.current = c;
 	}
-
+	static Map_Database data = new Map_Database();
+	static default_graphics dfg = new default_graphics();
 	GraphicsApplication app = this;
 	GImage singleHitCircle;
 	GImage hitCircle1;
@@ -55,12 +56,8 @@ public class Map_graphics extends Map implements KeyListener {
 	//Spawners
 	Spawner spawner = new Spawner(current, start, count_left, count_right, spawned_list, spawned_list_right);
 	public void run() {
-		if (current == level_2) {
-			speed = 15;
-		}
-		if (current == level_3) {
-			speed = 6;
-		}
+		//change speed
+		speed = dfg.change_speed(current);
 
 		start = System.currentTimeMillis();
 		requestFocus();
@@ -86,6 +83,117 @@ public class Map_graphics extends Map implements KeyListener {
 		logo.sendToFront();
 		add(logo);
 
+	}
+
+	@Override
+
+	public void keyPressed(KeyEvent e) {
+
+		int key = e.getKeyCode();
+		if (key == KeyEvent.VK_ESCAPE) {
+			box.reset_fail();
+			stopMusic();
+			reset();
+			menu.start();
+		}
+
+		if (key == KeyEvent.VK_W) {
+			if (current == level_3) {
+				if (check_left() == "bun") {
+					left_is_Hit();
+				}
+				if (check_right() == "bun") {
+					right_is_Hit();
+				}
+
+			} else {
+				if (check() == "bun") {
+					left_is_Hit();
+
+				}
+			}
+
+		}
+		if (key == KeyEvent.VK_A) {
+			if (current == level_3) {
+				if (check_left() == "tofu") {
+					left_is_Hit();
+				}
+				if (check_right() == "tofu") {
+					right_is_Hit();
+				}
+
+			} else {
+				if (check() == "tofu") {
+					left_is_Hit();
+
+				}
+			}
+
+		}
+		if (key == KeyEvent.VK_S) {
+			if (current == level_3) {
+				if (check_left() == "ketchup") {
+					left_is_Hit();
+				}
+				if (check_right() == "ketchup") {
+					right_is_Hit();
+				}
+
+			} else {
+				if (check() == "ketchup") {
+					left_is_Hit();
+
+				}
+			}
+
+		}
+		if (key == KeyEvent.VK_D) {
+			if (current == level_3) {
+				if (check_left() == "tomato") {
+					left_is_Hit();
+				}
+				if (check_right() == "tomato") {
+					right_is_Hit();
+				}
+
+			} else {
+				if (check() == "tomato") {
+					left_is_Hit();
+
+				}
+			}
+
+		}
+		if (failed(box)) {
+			box.reset_fail();
+			stopMusic();
+			reset();
+			Fail_screen f = new Fail_screen(current);
+			f.start();
+
+		}
+		if (passed(box.get_score())) {
+			box.reset_fail();
+			stopMusic();
+			reset();
+			Pass_screen p = new Pass_screen(current);
+			p.start();
+		}
+
+	}
+
+	public static void main(String args[]) {
+		// new Map_graphics().start();
+	}
+	public void add_game_background() {
+		// play game background
+		GImage blue = new GImage("title_screen_bluebackground.jpg", 0, 0);
+		add(blue);
+
+		// DJ
+		GImage dj = new GImage("DJ 1.png", 270, 285);
+		add(dj);
 	}
 
 	public void create_conveyor() {
@@ -448,108 +556,6 @@ public class Map_graphics extends Map implements KeyListener {
 		remove(getElementAt(overall_delete1.getX(), overall_delete1.getY()));
 		box.incrementScore();
 		box.incrementStreak();
-	}
-
-	@Override
-
-	public void keyPressed(KeyEvent e) {
-
-		int key = e.getKeyCode();
-		if (key == KeyEvent.VK_ESCAPE) {
-			box.reset_fail();
-			stopMusic();
-			reset();
-			menu.start();
-		}
-
-		if (key == KeyEvent.VK_W) {
-			if (current == level_3) {
-				if (check_left() == "bun") {
-					left_is_Hit();
-				}
-				if (check_right() == "bun") {
-					right_is_Hit();
-				}
-
-			} else {
-				if (check() == "bun") {
-					left_is_Hit();
-
-				}
-			}
-
-		}
-		if (key == KeyEvent.VK_A) {
-			if (current == level_3) {
-				if (check_left() == "tofu") {
-					left_is_Hit();
-				}
-				if (check_right() == "tofu") {
-					right_is_Hit();
-				}
-
-			} else {
-				if (check() == "tofu") {
-					left_is_Hit();
-
-				}
-			}
-
-		}
-		if (key == KeyEvent.VK_S) {
-			if (current == level_3) {
-				if (check_left() == "ketchup") {
-					left_is_Hit();
-				}
-				if (check_right() == "ketchup") {
-					right_is_Hit();
-				}
-
-			} else {
-				if (check() == "ketchup") {
-					left_is_Hit();
-
-				}
-			}
-
-		}
-		if (key == KeyEvent.VK_D) {
-			if (current == level_3) {
-				if (check_left() == "tomato") {
-					left_is_Hit();
-				}
-				if (check_right() == "tomato") {
-					right_is_Hit();
-				}
-
-			} else {
-				if (check() == "tomato") {
-					left_is_Hit();
-
-				}
-			}
-
-		}
-		if (failed(box)) {
-			box.reset_fail();
-			stopMusic();
-			reset();
-			Fail_screen f = new Fail_screen(current);
-			f.start();
-
-		}
-		if (passed(box.get_score())) {
-			box.reset_fail();
-			stopMusic();
-			reset();
-			Pass_screen p = new Pass_screen(current);
-			p.start();
-		}
-
-	}
-
-	public static void main(String args[]) {
-		// new Map_graphics().start();
 	}
 
 }

@@ -26,19 +26,22 @@ public class Map_graphics extends Map implements KeyListener {
 	// Creates Default Graphics
 	static default_graphics dfg = new default_graphics();
 	
-	GraphicsApplication app = this;
-	
-	// Makes images
+	// Makes images/ Noticed problem in code when images not declared globally
 	GImage singleHitCircle;
 	GImage hitCircle1;
 	GImage hitCircle2;
+	
 	long start, end;
-	int speed = 8;
+	int speed = 8; // Sets a default speed
+	
 	int count_left = 0;
 	int count_right = 0;
 
-	int index_right;
-	int index_left;
+	// Mostly used for Level 3 when there are two Hit circles
+	int index_right; // Used in all Levels
+	int index_left; // Only used in Level 3
+	
+	// Image that must be deleted when it passes through Hit Circle or Player presses the right button
 	GImage overall_delete;
 	GImage overall_delete1;
 	

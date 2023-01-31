@@ -13,4 +13,6 @@
 ## Commit 2: Moved Functions for Readability; inability to move functions to a different class because addGImage error when not added to local Run file
 ## Commit 3: Added Comments for fellow programmers to understand how Map_Graphic works
 ## Commit 4: Moved Music Function to New Class
+## Commit 5: New Class fixed.
+## Commit 6: Added Pseudocode explaining how specific variables change or are either used or unused when. Removed unused Variable. 
 

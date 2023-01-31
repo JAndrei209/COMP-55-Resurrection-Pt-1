@@ -96,7 +96,7 @@ public class Map_graphics extends Map implements KeyListener {
 	@Override
 
 	public void keyPressed(KeyEvent e) {
-
+ 
 		// To Leave the Game
 		int key = e.getKeyCode();
 		if (key == KeyEvent.VK_ESCAPE) {

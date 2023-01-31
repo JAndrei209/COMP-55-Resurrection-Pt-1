@@ -19,6 +19,7 @@ public class default_graphics extends Map implements KeyListener {
 	// Create New Class with Code
 	// Copy down functions and output wanted types
 	// Remove Extra Code
+	public static final String MUSIC_FOLDER = "sounds";
 	public int change_speed(Level l) {
 		int speed = 8;
 		if (l == level_2) {
@@ -29,6 +30,11 @@ public class default_graphics extends Map implements KeyListener {
 		}
 		return speed;
 	}
+	public void stopMusic() {
+		Song test = Song.getInstance();
+		test.stopSound(MUSIC_FOLDER, current.get_string());
+	}
+
 
 
 	public static void main(String args[]) {

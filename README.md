@@ -17,7 +17,7 @@
 
 #Section 3: Steps
 ## 1.) Open Map Graphics
-## 2.) Read Comments
+## 2.) Read Comments/ Psuedocode, notice a more compact program. 
 ## 3.) Go to Map, and press run to make sure code implementation did not affect the functionality of the program.
 
 
